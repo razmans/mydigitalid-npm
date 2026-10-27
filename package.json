@@ -1,0 +1,58 @@
+{
+  "name": "mydigitalid-sso",
+  "version": "0.1.0",
+  "description": "TypeScript client for MyDigital ID SSO (OIDC), built on keycloak-js",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "public/checksso.html",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "prepublishOnly": "npm run typecheck && npm test && npm run build",
+    "playground": "vite --config test/playground/vite.config.ts"
+  },
+  "dependencies": {
+    "keycloak-js": "^26.2.4"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "jsdom": "^30.1.3",
+    "tsup": "^9.0.0",
+    "typescript": "^5.9.3",
+    "vite": "^8.3.5",
+    "vitest": "^5.0.5"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "mydigital-id",
+    "mydigitalid",
+    "sso",
+    "oidc",
+    "keycloak",
+    "malaysia"
+  ]
+}

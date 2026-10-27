@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+*.tgz
+
+# Env and secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+
+# Test and tool caches
+coverage/
+.vite/
+*.tsbuildinfo
+
+# OS and editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

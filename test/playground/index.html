@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>mydigitalid-sso playground</title>
+    <style>
+      body { font-family: system-ui, sans-serif; max-width: 760px; margin: 0 auto; padding: 16px; }
+      header { background: #ffad02; padding: 12px 16px; border-radius: 6px; font-weight: bold; }
+      fieldset { margin: 16px 0; border-radius: 6px; }
+      label { display: block; margin: 6px 0; }
+      input[type="text"] { width: 100%; padding: 6px; box-sizing: border-box; }
+      button { padding: 8px 14px; border-radius: 16px; border: 2px solid #5889cb; background: #6199e3; color: #fff; cursor: pointer; }
+      button:disabled { opacity: 0.4; cursor: not-allowed; }
+      table { border-collapse: collapse; width: 100%; }
+      td { border: 1px solid #999; padding: 6px; word-break: break-all; }
+      td:first-child { width: 30%; font-weight: bold; }
+      pre { background: #111; color: #9f9; padding: 10px; border-radius: 6px; max-height: 220px; overflow: auto; white-space: pre-wrap; word-break: break-all; }
+      .row { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px 0; }
+    </style>
+  </head>
+  <body>
+    <header>mydigitalid-sso playground</header>
+
+    <fieldset>
+      <legend>Config (public client, no secret)</legend>
+      <label>Realm <input type="text" id="realm" placeholder="your-realm" /></label>
+      <label>Client ID <input type="text" id="clientId" placeholder="your-public-client" /></label>
+      <label>SSO URL (optional) <input type="text" id="url" placeholder="https://sso.digital-id.my" /></label>
+      <label><input type="checkbox" id="persist" /> persistSession (sessionStorage)</label>
+      <div class="row"><button id="save">Save &amp; init</button></div>
+      <small>Register <code id="origin"></code> as a redirect URI for this client.</small>
+    </fieldset>
+
+    <table>
+      <tr><td>Status</td><td id="status">Not initialised</td></tr>
+      <tr><td>NRIC</td><td id="nric">-</td></tr>
+      <tr><td>Full name</td><td id="fullName">-</td></tr>
+      <tr><td>Given name</td><td id="givenName">-</td></tr>
+      <tr><td>Family name</td><td id="familyName">-</td></tr>
+      <tr><td>Expires</td><td id="expiresAt">-</td></tr>
+    </table>
+
+    <div class="row">
+      <button id="login" disabled>Log in</button>
+      <button id="refresh" disabled>Force refresh token</button>
+      <button id="claims" disabled>Show claims</button>
+      <button id="logout" disabled>Log out</button>
+    </div>
+
+    <h3>Log</h3>
+    <pre id="log"></pre>
+
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>
